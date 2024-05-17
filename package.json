@@ -22,7 +22,7 @@
     "build": "tsup --dts",
     "prepublishOnly": "pnpm build",
     "prepare": "husky",
-    "test": "tap run --exclude=test/coverage-map.mjs --include=test"
+    "test": "tap run"
   },
   "files": [
     "dist",
