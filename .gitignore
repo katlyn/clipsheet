@@ -133,3 +133,6 @@ dist
 # Ignore editor-specific files
 .idea
 .vscode
+
+# tap
+.tap

@@ -19,9 +19,10 @@
     }
   },
   "scripts": {
-    "build": "tsup",
+    "build": "tsup --dts",
     "prepublishOnly": "pnpm build",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "tap run --exclude=test/coverage-map.mjs --include=test"
   },
   "files": [
     "dist",
@@ -35,14 +36,16 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
+    "tap": "^18.8.0",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.8.0"
   },
   "lint-staged": {
     "**/*": [
-      "prettier --write --ignore-unknown",
-      "eslint ."
+      "eslint .",
+      "prettier --write --ignore-unknown"
     ]
-  }
+  },
+  "type": "module"
 }
