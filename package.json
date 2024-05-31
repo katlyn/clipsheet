@@ -8,14 +8,14 @@
     "sheet",
     "sheetrock"
   ],
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./src/index.js",
+  "module": "./src/index.mjs",
+  "types": "./src/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "require": "./src/index.js",
+      "import": "./src/index.mjs",
+      "types": "./src/index.d.ts"
     }
   },
   "scripts": {
