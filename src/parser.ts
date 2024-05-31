@@ -4,9 +4,9 @@ export type ColumnMapping = Record<string, string>;
 export type ParsedRow<M extends ColumnMapping> = {
   [K in keyof M as M[K]]: string;
 };
-export type ParsedSheet<M extends ColumnMapping> = ParsedRow<M>[];
 
 type RowParser<T extends ColumnMapping> = (row: GVizRow) => ParsedRow<T>;
+
 export function createRowParser<T extends ColumnMapping>(
   mapping: T,
   cols: GVizCol[],
@@ -58,11 +58,4 @@ export function createRowParser<T extends ColumnMapping>(
 
     return ret as ParsedRow<T>;
   };
-}
-
-export function parseRows<T extends ColumnMapping>(
-  parser: RowParser<T>,
-  rows: GVizRow[],
-) {
-  return rows.map(parser);
 }

@@ -41,7 +41,7 @@ export interface GVizRow {
 }
 
 export interface GVizCell {
-  v: string | number | null;
+  v: string | number | null | boolean;
   f?: string;
 }
 
@@ -65,8 +65,6 @@ export async function queryGViz(
   const queryUrl = new URL(QUERY_URL_TEMPLATE.replace("KEY", key));
   queryUrl.searchParams.set("gid", gid);
   queryUrl.searchParams.set("tq", query);
-  // Append a JS function of known length, so we can tear out the JSON easily
-  queryUrl.searchParams.set("tqx", "responseHandler:remove");
 
   const response = await fetch(queryUrl);
 
@@ -75,8 +73,18 @@ export async function queryGViz(
   }
 
   const callbackString = await response.text();
-  const rawResult = callbackString.substring(15, callbackString.length - 2);
-  const parsed: GVizResponse = JSON.parse(rawResult);
+  const rawResult = callbackString.substring(
+    callbackString.indexOf("(") + 1,
+    callbackString.lastIndexOf(")"),
+  );
+
+  let parsed: GVizResponse;
+
+  try {
+    parsed = JSON.parse(rawResult);
+  } catch (err) {
+    throw new GVizRequestError(`Unable to parse response data: ${err}`);
+  }
 
   if (parsed.status === "error") {
     throw new GVizQueryError(parsed);
