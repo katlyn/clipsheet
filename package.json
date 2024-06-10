@@ -8,19 +8,8 @@
     "sheet",
     "sheetrock"
   ],
-  "main": "./src/index.js",
-  "module": "./src/index.mjs",
   "types": "./src/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./src/index.js",
-      "import": "./src/index.mjs",
-      "types": "./src/index.d.ts"
-    }
-  },
   "scripts": {
-    "build": "tsup --dts",
-    "prepublishOnly": "pnpm build",
     "prepare": "husky",
     "test": "tap run"
   },
@@ -37,7 +26,6 @@
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "tap": "^18.8.0",
-    "tsup": "^8.0.2",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.8.0",
     "undici": "^6.18.2"

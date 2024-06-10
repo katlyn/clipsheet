@@ -1,4 +1,4 @@
-import { GVizCell, GVizCol, GVizRow } from "@internal/gviz";
+import { GVizCell, GVizCol, GVizRow } from "./gviz";
 
 export type ColumnMapping = Record<string, string>;
 export type ParsedRow<M extends ColumnMapping> = {
