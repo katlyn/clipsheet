@@ -1,4 +1,9 @@
-export interface BaseGVizResponse {
+/**
+ * @file Provides utilities and types for use when querying the GViz API.
+ */
+
+/** Represents a generic response from the GViz API */
+interface BaseGVizResponse {
   version: string;
   reqId: string;
   status: string;
@@ -6,29 +11,34 @@ export interface BaseGVizResponse {
 
 type GVizResponse = GVizErrorResponse | GVizQueryResponse;
 
+/** An error response from the GViz API */
 export interface GVizErrorResponse extends BaseGVizResponse {
   status: "error";
   errors: GVizError[];
 }
 
+/** A successful response from the GViz API */
 export interface GVizQueryResponse extends BaseGVizResponse {
   status: "ok";
   sig: string;
   table: GVizTable;
 }
 
+/** Represents a singular error in a GVizErrorResponse */
 export interface GVizError {
   reason: string;
   message: string;
   detailed_message: string;
 }
 
+/** The representation of a full table from the GViz API */
 export interface GVizTable {
   cols: GVizCol[];
   rows: GVizRow[];
   parsedNumHeaders: number;
 }
 
+/** Represents a column definition */
 export interface GVizCol {
   id: string;
   label: string;
@@ -36,10 +46,12 @@ export interface GVizCol {
   pattern?: string;
 }
 
+/** Represents a row in a GVizTable */
 export interface GVizRow {
   c: (GVizCell | null)[];
 }
 
+/** Represents a cell in a GVizRow */
 export interface GVizCell {
   v: string | number | null | boolean;
   f?: string;
@@ -47,8 +59,10 @@ export interface GVizCell {
 
 const QUERY_URL_TEMPLATE = "https://docs.google.com/spreadsheets/d/KEY/gviz/tq";
 
+/** Error thrown when the request to the GViz API fails */
 export class GVizRequestError extends Error {}
 
+/** Error thrown if the GViz API returns an error (e.g., when a malformed query is provided) */
 export class GVizQueryError extends GVizRequestError {
   declare data: GVizErrorResponse;
   constructor(data: GVizErrorResponse) {
@@ -57,6 +71,13 @@ export class GVizQueryError extends GVizRequestError {
   }
 }
 
+/**
+ * Fetch data from the GViz API, wrapping errors in easily catchable classes. Extracts the useful JSON from the
+ * response, without executing any remote code.
+ * @param key Spreadsheet key
+ * @param gid Spreadsheet GID
+ * @param query The GViz query to execute. Leave blank to return all content in the sheet
+ */
 export async function queryGViz(
   key: string,
   gid: string,

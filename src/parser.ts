@@ -1,12 +1,25 @@
 import { GVizCell, GVizCol, GVizRow } from "./gviz";
 
+/** Specify a mapping of column identifiers to friendly names */
 export type ColumnMapping = Record<string, string>;
+
+/** Given a ColumnMapping, set each value as a key in an object */
 export type ParsedRow<M extends ColumnMapping> = {
   [K in keyof M as M[K]]: string;
 };
 
-type RowParser<T extends ColumnMapping> = (row: GVizRow) => ParsedRow<T>;
+/**
+ * Parse a single GVizRow.
+ * Created by createRowParser.
+ * @param row The row to be parsed
+ */
+export type RowParser<T extends ColumnMapping> = (row: GVizRow) => ParsedRow<T>;
 
+/**
+ * Creates a function that can be called to parse rows given a column mapping and the columns returned by the GViz API
+ * @param mapping The mapping of column identifiers to friendly names
+ * @param cols The GVizCols for the data that will be parsed, required for proper datatype handling
+ */
 export function createRowParser<T extends ColumnMapping>(
   mapping: T,
   cols: GVizCol[],
