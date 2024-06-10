@@ -1,22 +1,10 @@
 {
   "name": "clipsheet",
-  "version": "0.0.1",
-  "description": "Pull data from public Google Sheets using Google Query Language",
-  "keywords": [
-    "Google Sheets",
-    "spreadsheet",
-    "sheet",
-    "sheetrock"
-  ],
   "types": "./src/index.d.ts",
   "scripts": {
     "prepare": "husky",
     "test": "tap run"
   },
-  "files": [
-    "dist",
-    "src"
-  ],
   "author": "Katlyn Lorimer <opensource@katlyn.dev>",
   "license": "MIT",
   "devDependencies": {

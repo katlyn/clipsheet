@@ -5,5 +5,8 @@
     ".": "./src/index.ts",
     "./gviz": "./src/gviz.ts",
     "./parser": "./src/parser.ts"
+  },
+  "publish": {
+    "include": ["src/**/*.ts", "README.md", "LICENSE"]
   }
 }
