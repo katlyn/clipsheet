@@ -60,7 +60,7 @@ export class GVizQueryError extends GVizRequestError {
 export async function queryGViz(
   key: string,
   gid: string,
-  query: string,
+  query: string = "",
 ): Promise<GVizQueryResponse> {
   const queryUrl = new URL(QUERY_URL_TEMPLATE.replace("KEY", key));
   queryUrl.searchParams.set("gid", gid);
