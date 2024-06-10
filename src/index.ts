@@ -1,3 +1,8 @@
+/**
+ * Contains functions to facilitate fetching the data in a sheet.
+ * @module
+ */
+
 import { queryGViz } from "./gviz";
 import { ColumnMapping, createRowParser, ParsedRow } from "./parser";
 

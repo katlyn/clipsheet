@@ -1,3 +1,8 @@
+/**
+ * Provides a function to generate row parsers to make GVizRows easier to interact with
+ * @module
+ */
+
 import { GVizCell, GVizCol, GVizRow } from "./gviz";
 
 /** Specify a mapping of column identifiers to friendly names */

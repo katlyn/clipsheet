@@ -1,5 +1,6 @@
 /**
- * @file Provides utilities and types for use when querying the GViz API.
+ * Provides utilities and types for use when querying the GViz API.
+ * @module
  */
 
 /** Represents a generic response from the GViz API */
