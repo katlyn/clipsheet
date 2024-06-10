@@ -1,5 +1,9 @@
 {
   "name": "@katlyn/clipsheet",
-  "version": "0.1.0",
-  "exports": "./src/index.ts"
+  "version": "0.1.1",
+  "exports": {
+    ".": "./src/index.ts",
+    "./gvis": "./src/gviz.ts",
+    "./parser": "./src/parser.ts"
+  }
 }
