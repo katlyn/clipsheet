@@ -7,7 +7,7 @@
  * https://github.com/chriszarate/sheetrock
  */
 
-import ClipsheetError from "./errors";
+import ClipsheetError from "./errors.ts";
 
 /**
  * Regexes used to extract a sheet key and GID from url.
@@ -24,7 +24,13 @@ export const urlRegexes = {
   },
 };
 
-type SheetDetails = { key: string; gid: string };
+/**
+ * A basic structure that contains details needed to query a sheet
+ */
+export interface SheetDetails {
+  key: string;
+  gid: string;
+}
 
 /**
  * Extract a sheet's key and GID from the sheet URL

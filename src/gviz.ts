@@ -3,7 +3,7 @@
  * @module
  */
 
-import ClipsheetError from "./errors";
+import ClipsheetError from "./errors.ts";
 
 /** Represents a generic response from the GViz API */
 interface BaseGVizResponse {

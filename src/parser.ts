@@ -3,7 +3,7 @@
  * @module
  */
 
-import { GVizCell, GVizCol, GVizRow } from "./gviz";
+import { GVizCell, GVizCol, GVizRow } from "./gviz.ts";
 
 /** Specify a mapping of column identifiers to friendly names */
 export type ColumnMapping = Record<string, string>;
