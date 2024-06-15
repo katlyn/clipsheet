@@ -3,9 +3,6 @@ description: Steps used to install packages and create a functioning environment
 runs:
   using: "composite"
   steps:
-    - run: echo haiii
-      shell: bash
-
     - name: Install pnpm
       uses: pnpm/action-setup@v4
       with:
