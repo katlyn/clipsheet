@@ -7,6 +7,8 @@
  * https://github.com/chriszarate/sheetrock
  */
 
+import ClipsheetError from "./errors";
+
 /**
  * Regexes used to extract a sheet key and GID from url.
  * https://github.com/chriszarate/sheetrock/blob/0eaf2c63fe6a88a772b954c18dcfed636887a572/src/lib/config.js#L21-L33
@@ -32,11 +34,12 @@ type SheetDetails = { key: string; gid: string };
 export default function extractSheetDetails(url: string): SheetDetails {
   for (const { keyFormat, gidFormat } of Object.values(urlRegexes)) {
     if (keyFormat.test(url) && gidFormat.test(url)) {
+      // It's alright to assert these as non-null as we tested for their existence above.
       return {
         key: url.match(keyFormat)![1],
         gid: url.match(gidFormat)![1],
       };
     }
   }
-  throw new Error("Unable to extract key and GID from url");
+  throw new ClipsheetError("Provided URL does not contain a key and gid");
 }
