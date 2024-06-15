@@ -1,4 +1,6 @@
 // This file is a stub intended to include all files for test coverage.
-import t from "tap";
+import { glob } from "glob";
 
-t.pass();
+for (const file of await glob("src/**/*.ts")) {
+  import(`../${file}`);
+}
