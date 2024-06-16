@@ -1,5 +1,5 @@
 import t from "tap";
-import { createRowParser } from "../src/parser.js";
+import { createRowParser } from "../src/parser.ts";
 
 t.test("createRowParser", async (t) => {
   t.test("empty map with no columns", async (t) => {

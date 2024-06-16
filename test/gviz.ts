@@ -2,7 +2,7 @@ import t from "tap";
 import querystring from "querystring";
 
 import { MockAgent, setGlobalDispatcher } from "undici";
-import { queryGViz } from "../src/gviz.js";
+import { queryGViz } from "../src/gviz.ts";
 
 const mockAgent = new MockAgent();
 mockAgent.disableNetConnect();

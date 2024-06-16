@@ -1,4 +1,4 @@
 # vim: set filetype=yaml :
-coverage-map: test/coverage-map.js
+coverage-map: test/_map.js
 exclude:
-  - test/coverage-map.js
+  - test/_map.js

@@ -3,6 +3,8 @@
  * @module
  */
 
+import ClipsheetError from "./errors.ts";
+
 /** Represents a generic response from the GViz API */
 interface BaseGVizResponse {
   version: string;
@@ -61,7 +63,7 @@ export interface GVizCell {
 const QUERY_URL_TEMPLATE = "https://docs.google.com/spreadsheets/d/KEY/gviz/tq";
 
 /** Error thrown when the request to the GViz API fails */
-export class GVizRequestError extends Error {}
+export class GVizRequestError extends ClipsheetError {}
 
 /** Error thrown if the GViz API returns an error (e.g., when a malformed query is provided) */
 export class GVizQueryError extends GVizRequestError {

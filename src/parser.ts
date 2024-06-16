@@ -3,7 +3,7 @@
  * @module
  */
 
-import { GVizCell, GVizCol, GVizRow } from "./gviz";
+import { GVizCell, GVizCol, GVizRow } from "./gviz.ts";
 
 /** Specify a mapping of column identifiers to friendly names */
 export type ColumnMapping = Record<string, string>;
@@ -33,17 +33,22 @@ export function createRowParser<T extends ColumnMapping>(
     boolean: (cell: GVizCell) => cell.v,
     string: (cell: GVizCell) => cell.v,
     number: (cell: GVizCell) => cell.v,
-    date: (cell: GVizCell) =>
+    date: (cell: GVizCell) => {
       // Parse dates formatted as "Date(YYYY,MM,DD)"
-      typeof cell.v !== "string"
-        ? null
-        : new Date(cell.v.substring(5, cell.v.length - 1)),
+      if (typeof cell.v !== "string") return null;
+      const [year, month, day] = cell.v
+        .substring(5, cell.v.length - 1)
+        .split(",")
+        .map(Number);
+      return new Date(year, month, day);
+    },
     datetime: (cell: GVizCell) =>
       // Parse dates formatted as "Date(YYYY,MM,DD,HH,MM,SS)"
       // typeof cell.v !== "string"
       //   ? null
       //   : new Date(cell.v.substring(5, cell.v.length - 1)),
       // Timezones make the above inaccurate, so we just return the formatted time.
+      // Maybe at some point we can add some logic to handle this in a nice way.
       cell.f,
   };
 
