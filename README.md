@@ -43,7 +43,7 @@ const directory = await fetchSheet(
 );
 console.log(directory[0]); // { name: "Colorado Macias", email: "urna@hotmail.edu", ... }
 ```
-> ![NOTE]
+> [!NOTE]
 > Individual modules are available for consumption as well, in case you want to integrate more tightly with the data
 > returned by the GViz API. See the [documentation][documentation] for the available modules.
 
