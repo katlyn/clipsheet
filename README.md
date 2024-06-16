@@ -132,9 +132,9 @@ document.body.appendChild(table);
 
 Documentation is available on [JSR][documentation].
 
-# Credits
+## Credits
 
-Clipsheet is created by [katlyn](https://katlyn.dev/), with heavy inspiration from +
+Clipsheet is created by [katlyn](https://katlyn.dev/), with heavy inspiration from [Sheetrock][sheetrock].
 
 <!-- Reference links -->
 
