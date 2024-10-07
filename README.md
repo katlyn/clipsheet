@@ -130,6 +130,27 @@ table.appendChild(tbody);
 document.body.appendChild(table);
 ```
 
+## Logic flow
+The following diagram illustrates a simplified flow of logic present in Clipsheet.
+```mermaid
+---
+title: Clipsheet logic flow
+---
+flowchart TD
+    sheetURL(Sheet URL) -.->    fetchSheetFromUrl[fetchSheetFromUrl]
+    sheetDetails(Sheet details) --> queryGViz
+    fetchSheetFromUrl -.-> |extractSheetDetails| sheetDetails
+    sheetQuery(Query) -.-> queryGViz
+    sheetColumnMapping[Column mapping] -.-> createRowParser
+
+    subgraph fetchSheet
+        queryGViz --> |response from GViz API|mapRows
+        createRowParser --> mapRows[[Parse fetched rows]]
+    end
+
+    mapRows --> return([Return value])
+```
+
 ## Documentation
 
 Documentation is available on [JSR][documentation].
