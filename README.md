@@ -10,8 +10,8 @@ features.
 
 ## Usage
 
-Clipsheet is packaged and released on [JSR](https://jsr.io/), and is compatible with all Javascript runtimes using
-ESModules. See JSR's documentaiton for information on how to
+Clipsheet is packaged and released on [JSR][jsr_package], and is compatible with all Javascript runtimes using
+ESModules. See JSR's documentation for information on how to
 [install a JSR package](https://jsr.io/docs/using-packages). In the browser, [esm.sh](https://esm.sh/) can be used to
 import the library.
 
@@ -140,6 +140,7 @@ Clipsheet is created by [katlyn](https://katlyn.dev/), with heavy inspiration fr
 
 <!-- Reference links -->
 
+[jsr_package]: https://jsr.io/@katlyn/clipsheet
 [documentation]: https://jsr.io/@katlyn/clipsheet/doc
 [gql]: https://developers.google.com/chart/interactive/docs/querylanguage
 [sheetrock]: https://chriszarate.github.io/sheetrock/
