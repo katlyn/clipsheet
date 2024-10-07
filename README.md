@@ -1,6 +1,6 @@
 # Clipsheet
 
-<img alt="Clipsheet logo" src="./media/clipsheet.png" style="float:right; width: 200px; margin-left: 25px;"/>
+<img alt="Clipsheet logo" src="./media/clipsheet.png" align="right" width="200" style="margin-left: 25px;"/>
 
 Clipsheet allows you to easily pull data from public Google Sheets workbooks for use in displaying on websites,
 processing data, or otherwise. It uses Google's GViz API to query data, and transforms the resulting data into an
