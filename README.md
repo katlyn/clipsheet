@@ -130,7 +130,15 @@ table.appendChild(tbody);
 document.body.appendChild(table);
 ```
 
-## Logic flow
+## Structure
+Clipsheet is built with Typescript and uses the GViz API. The following files
+are currently present in the source code.
+- `errors.ts` specifies a base error class to allow easier error handling.
+- `givz.ts` contains utilities needed for interacting with the Google GViz API.
+- `index.ts` contains the public interface, and exports functions that allow you to use the library easily.
+- `parser.ts` contains utilities that allow transforming responses from the GViz API into structures that are more easily usable.
+- `urls.ts` contains utilities needed to parse Google Sheet URLs.
+
 The following diagram illustrates a simplified flow of logic present in Clipsheet.
 ```mermaid
 ---
