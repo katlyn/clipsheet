@@ -1,5 +1,7 @@
 # Clipsheet
 
+<img alt="Clipsheet logo" src="./media/clipsheet.png" align="right" width="200" style="margin-left: 25px;"/>
+
 Clipsheet allows you to easily pull data from public Google Sheets workbooks for use in displaying on websites,
 processing data, or otherwise. It uses Google's GViz API to query data, and transforms the resulting data into an
 easy-to-use array. Queries are written with the [Google Visualization Query Language][gql], allowing you to manipulate
@@ -8,8 +10,8 @@ features.
 
 ## Usage
 
-Clipsheet is packaged and released on [JSR](https://jsr.io/), and is compatible with all Javascript runtimes using
-ESModules. See JSR's documentaiton for information on how to
+Clipsheet is packaged and released on [JSR][jsr_package], and is compatible with all Javascript runtimes using
+ESModules. See JSR's documentation for information on how to
 [install a JSR package](https://jsr.io/docs/using-packages). In the browser, [esm.sh](https://esm.sh/) can be used to
 import the library.
 
@@ -128,6 +130,35 @@ table.appendChild(tbody);
 document.body.appendChild(table);
 ```
 
+## Structure
+Clipsheet is built with Typescript and uses the GViz API. The following files
+are currently present in the source code.
+- `errors.ts` specifies a base error class to allow easier error handling.
+- `givz.ts` contains utilities needed for interacting with the Google GViz API.
+- `index.ts` contains the public interface, and exports functions that allow you to use the library easily.
+- `parser.ts` contains utilities that allow transforming responses from the GViz API into structures that are more easily usable.
+- `urls.ts` contains utilities needed to parse Google Sheet URLs.
+
+The following diagram illustrates a simplified flow of logic present in Clipsheet.
+```mermaid
+---
+title: Clipsheet logic flow
+---
+flowchart TD
+    sheetURL(Sheet URL) -.->    fetchSheetFromUrl[fetchSheetFromUrl]
+    sheetDetails(Sheet details) --> queryGViz
+    fetchSheetFromUrl -.-> |extractSheetDetails| sheetDetails
+    sheetQuery(Query) -.-> queryGViz
+    sheetColumnMapping[Column mapping] -.-> createRowParser
+
+    subgraph fetchSheet
+        queryGViz --> |response from GViz API|mapRows
+        createRowParser --> mapRows[[Parse fetched rows]]
+    end
+
+    mapRows --> return([Return value])
+```
+
 ## Documentation
 
 Documentation is available on [JSR][documentation].
@@ -138,6 +169,7 @@ Clipsheet is created by [katlyn](https://katlyn.dev/), with heavy inspiration fr
 
 <!-- Reference links -->
 
+[jsr_package]: https://jsr.io/@katlyn/clipsheet
 [documentation]: https://jsr.io/@katlyn/clipsheet/doc
 [gql]: https://developers.google.com/chart/interactive/docs/querylanguage
 [sheetrock]: https://chriszarate.github.io/sheetrock/
