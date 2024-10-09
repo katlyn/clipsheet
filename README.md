@@ -78,6 +78,11 @@ work correctly. To get a compatible URL, view the sheet you want to query and co
 The following example populates a table within a page with data from the queried spreadsheet.
 [View on Codepen](https://codepen.io/katlyn/pen/KKLvEdj?editors=0010).
 
+<details>
+<summary>
+    Show code
+</summary>
+
 ```js
 import clipsheet from "https://esm.sh/jsr/@katlyn/clipsheet";
 
@@ -85,7 +90,7 @@ const data = await clipsheet(
   "https://docs.google.com/spreadsheets/d/17bl4YIU6MYxjdQro91eInFrRAPzpTORBsL8p5mKelSI/edit#gid=933278534",
   "SELECT A, B, C, D, E, I",
   {
-    A: "No.",
+    A: "Number",
     B: "Departure",
     C: "Arrival",
     D: "Train No. / Name",
@@ -130,6 +135,8 @@ table.appendChild(tbody);
 document.body.appendChild(table);
 ```
 
+</details>
+
 ## Structure
 Clipsheet is built with Typescript and uses the GViz API. The following files
 are currently present in the source code.
@@ -158,6 +165,7 @@ flowchart TD
 
     mapRows --> return([Return value])
 ```
+
 
 ## Documentation
 
